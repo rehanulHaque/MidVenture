@@ -6,12 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import axios from "axios";
 import { toast } from "sonner"
 import Image from "next/image";
-
-const styles = [
-  { label: "Ultra Realistic", icon: <Sparkle size={20} />, value: "ultra" },
-  { label: "Cartoon", icon: <Palette size={20} />, value: "cartoon" },
-  { label: "Oil Painting", icon: <Brush size={20} />, value: "oil" },
-];
+import Link from "next/link";
 
 interface GeneratedImagesTypes {
   url: string,
@@ -19,7 +14,6 @@ interface GeneratedImagesTypes {
 }
 export default function Page(){
   const [input, setInput] = useState("");
-  const [selectedStyle, setSelectedStyle] = useState(styles[0].value);
   const fileInputRef = useRef(null);
   const [generatedImages, setGeneratedImages] = useState<GeneratedImagesTypes[]>([]);
   const [loading, setLoading] = useState(false);
@@ -38,14 +32,6 @@ export default function Page(){
     }
     fetchCredits();
   }, []);
-
-  // const handleAttachFile = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   const file = e.target.files![0];
-  //   if (file) {
-  //     setAttachedFile(file);
-  //     setPreviewUrl(URL.createObjectURL(file));
-  //   }
-  // };
 
   const handleSend = async () => {
     setLoading(true);
@@ -134,34 +120,14 @@ export default function Page(){
               // onChange={handleAttachFile}
               disabled
             />
+            <Link href={"/prompts"}>
             <Button variant="outline" className="flex-1 flex items-center gap-2">
               <FileSearch size={18} /> Browse Prompts
             </Button>
+            </Link>
 
           </div>
-
-          {/* Preview */}
-          {/* {previewUrl && (
-            <div className="flex justify-start mt-2">
-              <img src={previewUrl} alt="Preview" className="rounded-lg border shadow" style={{ width: 200, height: 200, objectFit: 'cover' }} />
-            </div>
-          )} */}
         </div>
-      </div>
-
-      {/* Style Selection */}
-      <div className="grid grid-cols-3 gap-4 mb-10">
-        {styles.map(style => (
-          <Button
-            key={style.value}
-            variant={selectedStyle === style.value ? "default" : "outline"}
-            className="w-full flex gap-2 justify-center items-center py-4 text-base font-semibold"
-            onClick={() => setSelectedStyle(style.value)}
-          >
-            <span className="">{style.icon}</span>
-            {style.label}
-          </Button>
-        ))}
       </div>
 
       {/* Generated Images */}
@@ -179,7 +145,7 @@ export default function Page(){
             ))
           : generatedImages.map(img => (
               <div key={img.id} className="bg-zinc-50 dark:bg-zinc-900 rounded-xl shadow p-4 flex flex-col items-center">
-                <Image src={img.url} alt="Generated" className="rounded-lg mb-4" style={{ width: "100%", height: 180, objectFit: 'cover' }} />
+                <Image src={img.url} alt="Generated" height={300} width={300} className="rounded-lg mb-4" style={{ width: "100%", height: 180, objectFit: 'cover' }} />
                 <div className="flex gap-2 w-full">
                   <Button variant="outline" className="flex-1 flex items-center gap-2" onClick={() => handleDownload(img.url)}>
                     <Download size={16} /> Download

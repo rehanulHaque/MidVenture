@@ -13,7 +13,6 @@ export default function Page() {
   const handleSave = async() => {
     try {
       const response = await axios.put('/api/settings', { username });
-      console.log(response.data)
       toast.success(response.data.message)
     } catch (error: any) {
       toast.error(error.response.data.message || "Something went wrong")

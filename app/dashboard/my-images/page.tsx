@@ -77,7 +77,7 @@ export default function Page(){
         ) :
           images?.map(img => (
             <div key={img.id} className="bg-zinc-50 dark:bg-zinc-900 rounded-xl shadow p-4 flex flex-col items-center">
-              <Image src={img.transformedUrl} alt="My Image" className="rounded-lg mb-4 w-full" style={{ height: 180, objectFit: 'cover' }} />
+              <Image src={img.transformedUrl} alt="My Image" width={300} height={300} className="rounded-lg mb-4 w-full" style={{ height: 180, objectFit: 'cover' }} />
               <div className="flex gap-2 w-full">
                 <Button variant="outline" className="flex-1 flex items-center gap-2" onClick={() => handleDownload(img.transformedUrl)}>
                   <Download size={16} /> Download

@@ -79,12 +79,12 @@ export default function Page() {
         <h2 className="text-3xl font-bold text-center mb-10 text-zinc-900 dark:text-white">What Our Users Say</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="bg-white dark:bg-zinc-900 rounded-xl shadow p-6 flex flex-col items-center">
-            <Image src="https://randomuser.me/api/portraits/men/32.jpg" alt="User" className="h-14 w-14 rounded-full mb-3" />
+            {/* <Image src="https://randomuser.me/api/portraits/men/32.jpg" alt="User" className="h-14 w-14 rounded-full mb-3" /> */}
             <p className="italic text-zinc-700 dark:text-zinc-300 mb-2">“ImageGen helped me turn my ideas into beautiful artwork in seconds. The gallery and point system are game changers!”</p>
             <span className="font-semibold text-zinc-900 dark:text-white">John Doe</span>
           </div>
           <div className="bg-white dark:bg-zinc-900 rounded-xl shadow p-6 flex flex-col items-center">
-            <Image src="https://randomuser.me/api/portraits/women/44.jpg" alt="User" className="h-14 w-14 rounded-full mb-3" />
+            {/* <Image src="https://randomuser.me/api/portraits/women/44.jpg" alt="User" className="h-14 w-14 rounded-full mb-3" /> */}
             <p className="italic text-zinc-700 dark:text-zinc-300 mb-2">“The AI styles are amazing and the interface is so easy to use. Highly recommend for any creator!”</p>
             <span className="font-semibold text-zinc-900 dark:text-white">Jane Smith</span>
           </div>
